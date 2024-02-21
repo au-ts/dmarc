@@ -9,14 +9,15 @@ DMARCDIR = "/var/cache/dmarc"
 
 def save_report(content, filename):
     os.chdir(DMARCDIR)
-    pathname = quote(os.path.join(DMARCDIR, filename))
+    pathname = os.path.join(DMARCDIR, filename)
     with open(pathname, "wb") as f:
         f.write(content)
+    safefilename = quote(filename)
     if filename.endswith(".zip"):
-        os.system("unzip %s" % pathname)
+        os.system("unzip %s" % safefilename)
         os.remove(pathname)
     elif filename.endswith(".gz"):
-        os.system("gunzip %s" % pathname)
+        os.system("gunzip %s" % safefilename)
     
 def decode_email(msg):
     if msg.is_multipart():
