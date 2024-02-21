@@ -2,13 +2,14 @@
 import email
 import os
 import sys
+from shlex import quote
 from email.mime.text import MIMEText
 
 DMARCDIR = "/var/cache/dmarc"
 
 def save_report(content, filename):
     os.chdir(DMARCDIR)
-    pathname = os.path.join(DMARCDIR, filename) 
+    pathname = quote(os.path.join(DMARCDIR, filename))
     with open(pathname, "wb") as f:
         f.write(content)
     if filename.endswith(".zip"):
