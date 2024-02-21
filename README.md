@@ -24,7 +24,11 @@ simple visualisation of the reports so far.
 You probably need a `cron` job to clean up old reports too.
 Suggest something like:
 
+
 ```
-10 12 * * * root find /var/cache/dmarc -name '*xml' -mtime +60 -print0 | xargs -0 rm -f
+10 12 * * * Debian-exim find /var/cache/dmarc -name '*xml' -mtime +60 -print0 | xargs -0 rm -f
 ```
-in `/etc/cron.d/dmarc` to remove all reports over 60 days old.
+
+in `/etc/cron.d/dmarc` to remove all reports over 60 days old. (Use
+the user who creates the files, not necessarily `Debian-exim`) in
+`/etc/cron.d/dmarc` to remove all reports over 60 days old.
