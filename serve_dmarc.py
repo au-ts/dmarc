@@ -66,7 +66,6 @@ def process_dmarc_reports(report_dir):
 
     for filename in os.listdir(report_dir):
         if filename.endswith(".xml"):
-            print(filename)
             with open(os.path.join(report_dir, filename), "r") as report_file:
                 report_xml = report_file.read()
                 parsed_data = parse_dmarc_report(report_xml)
