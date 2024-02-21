@@ -1,4 +1,7 @@
 #! /usr/bin/env python3
+# Derived from code at
+# https://www.c-sharpcorner.com/article/how-to-build-a-dmarc-report-dashboard-with-python/
+#
 import os
 import xml.etree.ElementTree as ET
 import pandas as pd
